@@ -27,10 +27,8 @@ function parseFile () {
   })
 }
 
-function main () {
-  const passports = parseFile()
-
-  const validPassports = passports.reduce((acc, passport) => {
+function main (input) {
+  const validPassports = input.reduce((acc, passport) => {
     const props = Object.keys(passport)
 
     return MANDATORY_PROPS.every(p => props.includes(p)) ? acc + 1 : acc
@@ -39,4 +37,4 @@ function main () {
   return validPassports
 }
 
-console.log(main())
+console.log(main(parseFile()))
